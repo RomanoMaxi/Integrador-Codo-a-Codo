@@ -1,0 +1,432 @@
+/* El maquetado se realiza de la forma mobile-first. Es decir, primero pensado para celulares. */
+
+/**** Custom Properties *********/
+/* Van a ir las variables que voy a crear para ir usando a lo largo del archivo */
+/* defino con :root para poder definir los colores propios */
+:root {
+  --first-color: #3a3b3b;
+  --first-alpha-color: rgba(44, 45, 46, 0.75);
+  --second-color: #a0a0a1;
+  --second-alpha-color: rgba(82, 83, 88, 0.75);
+  --third-color: #429e2b;
+  --third-alpha-color: rgba(40, 238, 34, 0.75);
+  --white-color: #fff;
+  --green-light-color: #78b63f;
+  --gray-color: #ccc;
+  --gray-dark-color: #666;
+  --black-color: #000;
+  --link-color: #509ee3;
+  --title-color: #333;
+  --text-color: #222;
+  --white-alpha-color: rgba(255, 255, 255, 0.5);
+  --black-alpha-color: rgba(0, 0, 0, 0.5);
+  --font: "Raleway", sans-serif;
+  --max-width: 1200px;
+  --header-height: 3.5rem;
+}
+
+/******Reset*****/
+
+html {
+    box-sizing: border-box;
+    font-family: var(--font);
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  /* Reseteo el modelo de caja */
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--text-color);
+  }
+  /* Reseteo el margen y especifico los tamaños de los encabezados y otros elementos */
+  /* Los ordeno alfabeticamente */
+  a {
+    color: var(--link-color);
+    transition: all 0.75 ease-out;
+  }
+  a:hover {
+    opacity: 0.75;
+  }
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    padding: 0.25rem 0;
+  }
+  
+  h5 {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  
+  h6 {
+    margin: 0;
+    font-size: 0.7rem;
+  }
+  img {
+    /* Con esto hago responsive la img */
+    max-width: 100%;
+    height: auto;
+  }
+  p {
+    line-height: 1.6;
+  }
+
+
+  /******Components****/
+/* Los códigos de todos los componentes */
+
+/*******  ContactForm Validations   ******/
+.contact-form-response{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.contact-form [required]:valid{
+  border: thin solid rgb(37, 194, 37)
+}
+
+/* .contact-form [required]:invalid{
+  border: thin solid red
+} */
+.contact-form-error{
+  /* margin-top: 0.5rem; */
+  font-size: 80%;
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  transition: all 800ms ease;
+  height: 1.25rem;
+  
+}
+.contact-form-error.is-active{
+  display: block;
+  animation: show-message 1s 1 normal 0s ease-out both;
+}
+.none{
+  display: none;
+}
+@keyframes show-message {
+  0%{
+    visibility: hidden;
+    opacity: 0;
+  }
+  100%{
+    visibility: 100%;
+    opacity: 1;
+  }
+}
+/* Hero Img del Inicio */
+.hero-image {
+    background-image: var(--hero-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: var(--hero-attachment);
+
+    
+  }
+.hero-image-opacity {
+    width: 100%;
+    min-height: 100vh;
+    /* aplico el flex al contenido que va a estar por encima de la imagen */
+    display: flex;
+    justify-content: center;
+    
+    background-color: var(--hero-opacity-color);
+  }
+.hero-image-title {
+    font-size: 6.5vw;
+    color: var(--hero-text-color);
+  }
+.hero-image-content{
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap;
+    justify-content: right;
+    text-align: center;
+    align-items: center;
+}
+.hero-image-text{
+    margin-right: 3rem;
+    text-align: right;
+    width: 40%;
+}
+.hero-image-content p{
+    color: var(--white-color);
+}
+/* Menú */
+.menu-btn {
+    outline: thin solid var(--first-color);
+    border: 0;
+    cursor: pointer;
+    background-color: var(--second-color);
+  }
+.menu-btn svg {
+    fill: var(--first-color);
+  }
+.menu {
+    position: fixed;
+    left: 0;
+    bottom: var(--header-height);
+    width: 100%;
+    /* doy display flex para mostrar los elementos del menú */
+    display: flex;
+    flex-direction: column;
+    /* menu desactivado */
+    opacity: 0;
+    /* Como tengo opacidad 0 tengo que darle que el curso no haga nada al pasar por elementos */
+    pointer-events: none;
+    background-color: var(--second-color);
+    transition: opacity 0.5s ease;
+  }
+  /* Defino cuando se active el menu, con JS*/
+.menu.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+.menu a {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: var(--first-color);
+  }
+.menu a:hover {
+    color: var(--white-color);
+    background-color: var(--first-color);
+  }
+.menu a:last-child{
+    color: var(--third-color);
+}
+.menu a:last-child:hover {
+    color: var(--gree-light-color);
+    
+  }
+
+.oradores-section h4{
+    color: var(--gray-dark-color);
+}
+.promociones{
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  justify-content: space-between;
+}
+.promo{
+  text-align: center;
+}
+.estudiante{
+  border: thin solid rgb(13, 57, 253);
+}
+.trainee {
+  border: thin solid rgb(44, 239, 253);
+}
+.junior {
+  border: thin solid rgb(204, 218, 21);
+}
+.section-title {
+    text-align: center;
+    color: var(--title-color);
+  }
+
+/* Divido la sección para cuando la pantalla tengo menios de 1024px */
+@media screen and (min-width: 1024px) {
+    .menu-btn {
+      display: none;
+    }
+    .menu {
+      position: static;
+      width: auto;
+      flex-direction: row;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .menu a {
+      padding: 0 1rem;
+    }
+    .menu a:last-child {
+      padding-right: 0;
+    }
+    .menu a:hover {
+      background-color: transparent;
+    }
+  }
+
+/****  Utilities ****/
+/* Clases utilitarias para cosas en comun, por ejemplo de acomodar texto o tipografía que 
+puedo reutilizar en otro documento */
+.contact-form textarea{
+  resize: none;
+  width: 100%;
+}
+.contact-form small{
+  color: var(--gray-dark-color);
+}
+.contact-form .btn {
+  background-color: rgb(20, 119, 20);
+  border-color: rgb(33, 179, 33);
+}
+.botones-reseteo .btn{
+  background-color: rgb(20, 119, 20);
+  border-color: rgb(33, 179, 33);
+}
+.contact-form .btn:hover {
+  background-color: var(--green-light-color);
+  border-color: rgb(33, 179, 33);
+}
+
+.co
+.contact-form .btn:hover{
+  background-color: var(--green-light-color);
+  border-color:rgb(33, 179, 33)   ;
+}
+.botones-reseteo .btn:hover{
+  background-color: var(--green-light-color);
+  border-color: rgb(33, 179, 33);
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-width);
+  }
+.none {
+    display: none;
+  }
+.section {
+    padding: 2rem 1rem;
+  }
+
+
+ /**** Site Styles ****/ 
+.footer{
+  background-color: rgb(34, 84, 158);
+  width: 100%;
+    
+  text-align: center;
+  align-items: center;
+
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--white-color);
+  background-color: rgb(34, 84, 158);
+}
+.small-footer{
+  padding-right: 1.5rem ;
+  margin-bottom: 1rem;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    padding:auto auto;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--second-color);
+  }
+.header > .container {
+    /* Le doy la forma al menu para versión mobile */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto;
+  }
+.infoBsAs{
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  
+}
+.info-bsas{
+  padding: 1rem 1rem 1rem 1rem;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  
+}
+
+.logo  {
+    width: 250px;
+    display: inline;
+  }
+.logo a{
+    padding: 1rem;
+    margin: 0.5rem 0;
+    text-align: center;
+    float: right;
+
+    text-decoration: none;
+    color: var(--white-color);
+    height: var(--header-height);
+    font-weight: bold;
+}
+.logo img{
+    max-width: 125px;
+    
+}
+.row {
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* Aplico estilos para medidas inferiores */
+/* esto sería para dimensiones de tablet */
+.card-group{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+/* esto es para la sección de escritorio */
+@media screen and (min-width: 1024px) { 
+    
+    .header {
+        /* uso el sticky para que no tape el contenido y lo mando arriba */
+        position: sticky;
+        top: 0;
+        padding: 0.5rem;
+        height: calc(var(--header-height)- 1.5rem);
+      }
+    .infoBsAs{
+        padding: auto auto;
+        display: grid;
+        grid-template-columns: repeat(2,50%);
+      }
+    .card-group{
+        display: grid;
+        grid-template-columns: repeat(3,32%);
+        justify-content: center;
+        
+      } 
+    .card{
+      
+      margin-right: .75rem;
+    }
+    
+    
+    }
+    
