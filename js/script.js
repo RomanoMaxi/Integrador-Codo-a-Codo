@@ -95,12 +95,7 @@ let $cantidadEntradas = document.getElementById('inputCantidad'),
 
 const valorEntrada = 200;
 
-
-
-
 // function validarCadena(nombre,apellido,email){
-
-
 function resumen(){
   
   contactFormValidations();
@@ -109,7 +104,10 @@ function resumen(){
   console.log($cantidadEntradas.value)
 
   $cantidadEntradas.value
-
+  if($categoria.value== "basico"){
+    monto = (valorEntrada)*$cantidadEntradas.value;
+    acumulado += acumulado;
+  }
   if($categoria.value == "estudiante"){
    monto = (valorEntrada - valorEntrada*0.2)*$cantidadEntradas.value;
    acumulado+= acumulado;
