@@ -49,6 +49,7 @@ html {
   a {
     color: var(--link-color);
     transition: all 0.75 ease-out;
+    
   }
   a:hover {
     opacity: 0.75;
@@ -217,8 +218,8 @@ html {
   }
 .menu a:hover {
     color: var(--white-color);
-    background-color: var(--first-color);
-  }
+    background-color: var(--first-color); 
+   }
 .menu a:last-child{
     color: var(--third-color);
 }
@@ -245,7 +246,7 @@ html {
   border: thin solid rgb(44, 239, 253);
 }
 .junior {
-  border: thin solid rgb(204, 218, 21);
+  border: thin solid rgb(233, 248, 16);
 }
 .section-title {
     text-align: center;
@@ -278,6 +279,9 @@ html {
 /****  Utilities ****/
 /* Clases utilitarias para cosas en comun, por ejemplo de acomodar texto o tipografía que 
 puedo reutilizar en otro documento */
+.contact-form{
+  padding: 3% 5%;
+}
 .contact-form textarea{
   resize: none;
   width: 100%;
@@ -298,7 +302,7 @@ puedo reutilizar en otro documento */
   border-color: rgb(33, 179, 33);
 }
 
-.co
+
 .contact-form .btn:hover{
   background-color: var(--green-light-color);
   border-color:rgb(33, 179, 33)   ;
@@ -321,17 +325,23 @@ puedo reutilizar en otro documento */
 
 
  /**** Site Styles ****/ 
-.footer{
-  background-color: rgb(34, 84, 158);
-  width: 100%;
-    
-  text-align: center;
-  align-items: center;
 
-  padding: 1.5rem 0;
+
+ 
+.footer{
+  background-color:  rgb(34, 84, 158);
+  width: 100%;
+ 
+
+  align-items: center;
+  padding: 1.3rem ;
+  
   text-align: center;
   color: var(--white-color);
-  background-color: rgb(34, 84, 158);
+
+  position: absolute;
+  margin-bottom: 0;
+  
 }
 .small-footer{
   padding-right: 1.5rem ;
